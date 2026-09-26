@@ -100,7 +100,7 @@ features_df = pd.DataFrame([{
 
 #Prediction
 st.write("") 
-if st.button("Analyze Conversion Probability", type="primary", use_container_width=True):
+if st.button("Predict Conversion", type="primary", use_container_width=True):
     
     if not classifier:
         st.error("System Error: Model weights not found. Ensure 'best_tourism_model_V1.joblib' is in the directory.")
@@ -109,22 +109,19 @@ if st.button("Analyze Conversion Probability", type="primary", use_container_wid
             
             # Execute inference
             label_pred = classifier.predict(features_df)[0]
-            confidence_scores = classifier.predict_proba(features_df)[0]
-            win_probability = confidence_scores[1] * 100
-            loss_probability = confidence_scores[0] * 100
 
             st.markdown("### Analysis Complete")
             
             # Text-only UI routing based on prediction
             if label_pred == 1:
                 st.markdown("#### High Conversion Potential")
-                st.write(f"This prospect strongly matches the profile of a converted customer. (Confidence: {win_probability:.1f}%)")
-                st.write("**Action Item:** Assign to Senior Sales Rep and initiate immediate follow-up.")
+                st.write(f"This prospect strongly matches the profile of a converted customer.")
+                
                 
             else:
                 st.markdown("#### Low Conversion Potential")
-                st.write(f"This prospect is currently unlikely to purchase the wellness package. (Confidence: {loss_probability:.1f}%)")
-                st.write("**Action Item:** Place prospect in automated nurturing sequence rather than manual follow-up.")
+                st.write(f"This prospect is currently unlikely to purchase the wellness package.")
+                
 
 
 #Footer
