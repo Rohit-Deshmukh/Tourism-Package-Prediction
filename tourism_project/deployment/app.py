@@ -52,7 +52,7 @@ col_c, col_d = st.columns(2)
 
 with col_c:
     reach_out_method = st.selectbox("Acquisition Channel", ["Self Enquiry", "Company Invited"])
-    pitch_mins = st.slider("Pitch Duration (Mins)", 0.0, 60.0, 10.0, 0.5)
+    pitch_mins = st.slider("Pitch Duration (Mins)", 0.0, 90.0, 10.0, 1.0)
     follow_up_cnt = st.number_input("Prior Follow-ups", 0, 10, 2)
     satisfaction_rating = st.slider("Pitch Rating (1-5)", 1, 5, 4)
     pkg_offered = st.selectbox("Package Pitched", ["Basic", "Standard", "Deluxe", "Super Deluxe", "King"])
